@@ -1,0 +1,6 @@
+p{
+    background-color: red;
+}
+input:checked{
+    accent-color: red;
+}

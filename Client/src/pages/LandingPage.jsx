@@ -1,20 +1,31 @@
 import HeroSlider from "../components/HeroSlider";
 import { Link } from "react-router-dom";
 import about from "../assets/pictures/about.jpg";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 function LandingPage() {
+  const { user } = useAuthContext();
+
   return (
     <>
       <div className="h-[93vh] w-full ">
         <HeroSlider />
-        <div className="h-[500px] w-[1400px] bg-white bg-opacity-10 left-[50%]
+        <div
+          className="h-[500px] w-[1400px] bg-white bg-opacity-10 left-[50%]
         top-[50%] -translate-x-2/4 -translate-y-2/4 absolute flex flex-col gap-8 
-        items-center justify-center rounded-lg  backdrop-blur-md">
-          <h1 className="text-9xl text-frenchBlue font-black">
-            <Link to="/signup">JOIN US NOW!!</Link>
+        items-center justify-center rounded-lg  backdrop-blur-md"
+        >
+          <h1 className="font-black text-center uppercase text-9xl text-frenchBlue">
+            {!user && <Link to="/signup">JOIN US NOW!!</Link>}
+            {user && (
+              <Link>
+                Welcome Aboard,{"\n"} {user.name}!
+              </Link>
+            )}
           </h1>
-          <p className="text-4xl text-russet font-bold">
-            <q>Unlock your true potential!!!</q>
+          <p className="text-4xl font-bold text-russet">
+            {!user && <q>Unlock your true potential!!!</q>}
+            {user && <q>Let&apos;s make it happen.</q>}
           </p>
         </div>
       </div>

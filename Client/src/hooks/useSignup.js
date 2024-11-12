@@ -4,14 +4,13 @@ import { useAuthContext } from "./useAuthContext";
 export const useSignup = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-const {dispatch} = useAuthContext();
-
+  const { dispatch } = useAuthContext();
 
   const signup = async (name, email, password) => {
     setLoading(true);
     setError(null);
 
-    const response = await fetch("https://fitrack-ewi2.onrender.com/user/signup", {
+    const response = await fetch("http://localhost:4000/user/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -23,18 +22,18 @@ const {dispatch} = useAuthContext();
     if (!response.ok) {
       setError(data.message);
       setLoading(false);
-       }
+    }
     if (response.ok) {
-        //save uer to localstorage
-        localStorage.setItem("user", JSON.stringify(data));
+      //save uer to localstorage
+      localStorage.setItem("user", JSON.stringify(data));
 
-        //update auth context
-        dispatch({
-          type: "LOGIN",
-          payload: data,
-        });
+      //update auth context
+      dispatch({
+        type: "LOGIN",
+        payload: data,
+      });
 
-        setLoading(false);
+      setLoading(false);
     }
   };
 

@@ -9,7 +9,7 @@ export default function Navbar() {
     { label: "Calculators", path: "/calculators", value: 1 },
     { label: "Nutrition", path: "/nutrition", value: 2 },
     { label: "Workouts", path: "/workouts", value: 3 },
-    { label: "Achievements", path: "/achievements", value: 4 },
+    { label: "Pose Detection", path: "/poseDetection", value: 4 },
   ];
 
   const activeStyle = {

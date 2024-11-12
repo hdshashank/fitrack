@@ -22,7 +22,7 @@ function Workouts() {
   };
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch("https://fitrack-ewi2.onrender.com/workouts", {
+      const response = await fetch("http://localhost:4000/workouts", {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       const json = await response.json();
@@ -58,17 +58,17 @@ function Workouts() {
                 sx={{ width: "40ch" }}
               />
             </LocalizationProvider>
-            <p className="text-frenchBlue font-black tracking-wide text-xl">
+            <p className="text-xl font-black tracking-wide text-frenchBlue">
               Workouts logged on {selectedDate.format("MM/DD/YYYY")}
             </p>
           </div>
-          <div className="flex gap-6 flex-wrap ml-7 mt-10">
+          <div className="flex flex-wrap gap-6 mt-10 ml-7">
             {filteredWorkouts.length > 0 ? (
               filteredWorkouts.map((workout) => (
                 <WorkoutDetails key={workout._id} workout={workout} />
               ))
             ) : (
-              <div className="flex flex-col gap-16 top-16 relative">
+              <div className="relative flex flex-col gap-16 top-16">
                 <p className="text-3xl font-black tracking-wider">
                   No workouts found for the selected date.
                 </p>
@@ -79,7 +79,7 @@ function Workouts() {
         </div>
         <WorkoutForm />
       </div>
-      <div className="h-full w-full flex items-center justify-center">
+      <div className="flex items-center justify-center w-full h-full">
         <ExerciseForm />
       </div>
 

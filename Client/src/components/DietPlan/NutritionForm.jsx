@@ -140,7 +140,7 @@ function NutritionForm() {
       region,
     };
     const response = await fetch(
-      "https://fitrack-ewi2.onrender.com/nutrition/recommendations",
+      "http://localhost:4000/nutrition/recommendations",
       {
         method: "POST",
         headers: {
@@ -168,10 +168,10 @@ function NutritionForm() {
             showResult == "block" ? "rounded-tl-xl rounded-bl-xl" : "rounded-xl"
           }`}
         >
-          <h1 className="text-3xl font-bold text-frenchBlue pt-2">
+          <h1 className="pt-2 text-3xl font-bold text-frenchBlue">
             Generate Nutrition Plan
           </h1>
-          <div className=" h-full w-full  flex flex-col items-center justify-center ">
+          <div className="flex flex-col items-center justify-center w-full h-full ">
             <mui.FormControl className="flex h-[790px] w-[350px] justify-evenly ">
               <mui.TextField
                 label="Height (cm)"
@@ -298,11 +298,13 @@ function NutritionForm() {
         </div>
         <div
           className={`${
-            loading ? "block h-[94vh] absolute z-50 w-screen bg-black bg-opacity-20 " : "hidden"
+            loading
+              ? "block h-[94vh] absolute z-50 w-screen bg-black bg-opacity-20 "
+              : "hidden"
           }`}
         >
           <div className="flex items-center justify-center h-full">
-          <Loader2 />
+            <Loader2 />
           </div>
         </div>
         <div

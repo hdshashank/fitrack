@@ -18,7 +18,6 @@ function ExerciseForm() {
   const [emptyFields, setEmptyFields] = useState([]);
   const [loading, setLoading] = useState(false);
 
-
   const gen = [
     {
       value: "male",
@@ -72,7 +71,6 @@ function ExerciseForm() {
     e.preventDefault();
     setLoading(true);
 
-
     if (!height || !weight || !age || !gender || !workoutType || !fitnessGoal) {
       setError("Please fill in all fields");
       return;
@@ -87,7 +85,7 @@ function ExerciseForm() {
       fitnessGoal,
     };
     const response = await fetch(
-      "https://fitrack-ewi2.onrender.com/workout/recommendations",
+      "http://localhost:4000/workout/recommendations",
       {
         method: "POST",
         headers: {
@@ -117,10 +115,10 @@ function ExerciseForm() {
             showResult == "block" ? "rounded-tl-xl rounded-bl-xl" : "rounded-xl"
           }`}
         >
-          <h1 className="text-3xl font-bold text-frenchBlue pt-8">
+          <h1 className="pt-8 text-3xl font-bold text-frenchBlue">
             Generate Workout Plan
           </h1>
-          <div className=" h-full w-full  flex flex-col items-center justify-center ">
+          <div className="flex flex-col items-center justify-center w-full h-full ">
             <mui.FormControl className="flex h-[700px] w-[375px] justify-evenly ">
               <mui.TextField
                 label="Height (cm)"
@@ -207,11 +205,13 @@ function ExerciseForm() {
         </div>
         <div
           className={`${
-            loading ? "block h-[94vh] absolute z-50 w-screen bg-black bg-opacity-20 " : "hidden"
+            loading
+              ? "block h-[94vh] absolute z-50 w-screen bg-black bg-opacity-20 "
+              : "hidden"
           }`}
         >
           <div className="flex items-center justify-center h-full">
-          <Loader2 />
+            <Loader2 />
           </div>
         </div>
         <div
@@ -223,7 +223,6 @@ function ExerciseForm() {
         >
           {workoutPlan && <WorkoutPlan plan={JSON.parse(workoutPlan)} />}
         </div>
-        
       </div>
     </>
   );

@@ -31,7 +31,7 @@ function WorkoutForm() {
     }
 
     const workout = { title, reps, sets, weight };
-    const response = await fetch("https://fitrack-ewi2.onrender.com/workouts", {
+    const response = await fetch("http://localhost:4000/workouts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
