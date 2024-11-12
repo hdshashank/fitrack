@@ -140,7 +140,7 @@ function NutritionForm() {
       region,
     };
     const response = await fetch(
-      "http://localhost:4000/nutrition/recommendations",
+      "https://vultr-fitrack.onrender.com/nutrition/recommendations",
       {
         method: "POST",
         headers: {

@@ -10,13 +10,16 @@ export const useSignup = () => {
     setLoading(true);
     setError(null);
 
-    const response = await fetch("http://localhost:4000/user/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, password }),
-    });
+    const response = await fetch(
+      "https://vultr-fitrack.onrender.com/user/signup",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      }
+    );
     const data = await response.json();
 
     if (!response.ok) {

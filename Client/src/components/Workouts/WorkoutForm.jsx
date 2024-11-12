@@ -31,14 +31,17 @@ function WorkoutForm() {
     }
 
     const workout = { title, reps, sets, weight };
-    const response = await fetch("http://localhost:4000/workouts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-      body: JSON.stringify(workout),
-    });
+    const response = await fetch(
+      "https://vultr-fitrack.onrender.com/workouts",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+        body: JSON.stringify(workout),
+      }
+    );
     const json = await response.json();
 
     if (!response.ok) {
