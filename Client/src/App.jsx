@@ -5,7 +5,7 @@ import LandingPage from "./pages/LandingPage";
 import Calculators from "./pages/Calculators";
 import Nutrition from "./pages/Nutrition";
 import Workouts from "./pages/Workouts";
-import Achievements from "./pages/Achievements";
+import PoseDetection from "./pages/poseDetection";
 import Community from "./pages/Community";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -28,7 +28,7 @@ export default function App() {
               path="/workouts"
               element={!user ? <SignUp /> : <Workouts />}
             />
-            <Route path="/achievements" element={<Achievements />} />
+            <Route path="/poseDetection" element={<PoseDetection />} />
             <Route path="/community" element={<Community />} />
             <Route
               path="/login"
